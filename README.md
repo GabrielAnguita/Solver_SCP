@@ -1,3 +1,6 @@
+# Solver CSP
+
+
 El presente proyecto está dividido en diferentes carpetas las cuales son las siguientes:
 
 1. BD: 
@@ -32,7 +35,7 @@ Para ejecutar los experimentos, primero deben poblar la base de datos. Para esto
 
 Una vez poblada la base de datos, deben ejecutar el archivo "main.py" en cual comenzará a llamar los experimentos que se encuentran pendientes en la base de datos.
 
-DEPENDENCIAS:
+## DEPENDENCIAS:
 
 La versión de python es 3.10.5 de 64 bit 
 numpy==1.23.1
