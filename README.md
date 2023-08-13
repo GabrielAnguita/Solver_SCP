@@ -1,4 +1,4 @@
-# Solver CSP
+# Solver SCP
 
 
 El presente proyecto está dividido en diferentes carpetas las cuales son las siguientes:

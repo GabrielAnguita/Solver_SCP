@@ -7,6 +7,7 @@ from Metaheuristics.SCA import iterarSCA
 from Metaheuristics.WOA import iterarWOA
 from Metaheuristics.MFO import iterarMFO
 from Metaheuristics.GA import iterarGA
+from Metaheuristics.MSA import iterarMSA
 from Diversity.hussainDiversity import diversidadHussain
 from Diversity.XPLXTP import porcentajesXLPXPT
 import time
@@ -116,6 +117,8 @@ def solverSCP(id, mh, maxIter, pop, instancia, DS, repairType, param):
             cross = float(param.split(";")[0].split(":")[1])
             muta = float(param.split(";")[1].split(":")[1])
             poblacion = iterarGA(poblacion.tolist(), fitness, cross, muta)
+        if mh == "MSA":
+            poblacion = iterarMSA(maxIter, iter, poblacion, solutionsRanking)
         
         # Binarizo, calculo de factibilidad de cada individuo y calculo del fitness
         for i in range(poblacion.__len__()):
