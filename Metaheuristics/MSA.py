@@ -12,10 +12,10 @@ def iterarMSA(maxIter, t, poblacion, solutionsRanking):
     max_step = ...
     # at this step the population should already be binarized, if it needs to
     length = len(poblacion)
-    for i, solucion in enumerate(poblacion[:length/2]):
+    for i, solucion in enumerate(solutionsRanking[:length/2]):
         # Levy flight
         poblacion[i] = solucion + ...
-    for i, solucion in enumerate(poblacion[(length/2) + 1:]):
+    for i, solucion in enumerate(solutionsRanking[(length/2) + 1:]):
         # Flight straight
         if random.random() > 0.5:
             poblacion[i] = ...
