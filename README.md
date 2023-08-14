@@ -45,9 +45,15 @@ pandas==1.4.3
 seaborn==0.11.2
 
 Se recomienda instalación mediante pyenv + poetry (probado en Debian):
+
 `pyenv install 3.10.5`
+
 `pyenv local 3.10.5`
+
 `poetry env use 3.10.5`
+
 `poetry install`
+
 `poetry shell`
+
 Se accederá a una shell en un ambiente virtual con las dependencias instaladas, ahora es posible correr los scripts sin problemo!
