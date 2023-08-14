@@ -7,7 +7,7 @@ from scipy.special import gamma
 
 def iterarMSA(maxIter: int, t: int, population: np.array, bestSolution) -> np.array:
     """
-    WIP: Moth Search Algorithm:
+    WIP: Moth Search Algorithm
     Implementation of https://link.springer.com/article/10.1007/s12293-016-0212-3
 
     TODO: SORT POPULATION BY FITNESS BEFORE ITERATING!
