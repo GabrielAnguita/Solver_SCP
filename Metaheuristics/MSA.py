@@ -7,6 +7,8 @@ from scipy.special import gamma
 
 def iterarMSA(maxIter: int, t: int, population: np.array, bestSolution) -> np.array:
     # TODO: SORT POPULATION BY FITNESS BEFORE ITERATING!
+    # TODO: Check if the constants defined below are supposed to be actual constants,
+    #        or we got something wrong. Also, set them to more adequate values.
     beta = 1.5
     max_step = 1
     s = 1
