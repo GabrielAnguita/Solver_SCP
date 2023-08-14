@@ -10,8 +10,8 @@ def iterarMSA(maxIter: int, t: int, population: np.array, bestSolution) -> np.ar
     beta = 1.5
     max_step = 1
     s = 1
-    lambda_factor = ...
-    phi = ...
+    lambda_factor = 1
+    phi = 1
     levy = (
         (beta - 1) * gamma(beta - 1) * math.sin(math.pi * (beta - 1) / 2)
     ) / math.pi * s**beta
