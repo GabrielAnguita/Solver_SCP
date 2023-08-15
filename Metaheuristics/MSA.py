@@ -47,4 +47,5 @@ def iterarMSA(maxIter: int, t: int, population: np.array, bestSolution) -> np.ar
             population[i] = lambda_factor * (
                 candidate + (1 / phi) * (bestSolution - candidate)
             )
+    # CAMBIO DE EJEMPLO
     return np.array(population)
