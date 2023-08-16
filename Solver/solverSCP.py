@@ -118,7 +118,7 @@ def solverSCP(id, mh, maxIter, pop, instancia, DS, repairType, param):
             muta = float(param.split(";")[1].split(":")[1])
             poblacion = iterarGA(poblacion.tolist(), fitness, cross, muta)
         if mh == "MSA":
-            poblacion = iterarMSA(maxIter, iter, poblacion, Best.tolist())
+            poblacion = iterarMSA(maxIter, iter, poblacion, fitness, Best.tolist())
         
         # Binarizo, calculo de factibilidad de cada individuo y calculo del fitness
         for i in range(poblacion.__len__()):
