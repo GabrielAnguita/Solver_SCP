@@ -17,18 +17,19 @@ El presente proyecto está dividido en diferentes carpetas las cuales son las si
         4. Pendulum Search Algorithm
         5. Sine Cosine Algorithm
         6. Whale Optimization Algorithm
+        7. Moth Search Algorithm
     EN ESTA CARPETA DEBEN IMPLEMENTAR SU metaheurísticas
-5. Problem:
+6. Problem:
     En esta carpeta se encuentran todos los componentes de los problemas de optimización implementados. En este proyecto solo se encuentran dos problemas:
         1. Funciones matemáticas Benchmark: Estas son las funciones matemáticas Benchmark clásicas resueltas en la literatura. Son problemas continuos
         2. Set Covering Problem. Este es un problema de optimización combinatorial de minimización clásico. 
            En el archivo "problem.py" se encuentra la lectura de instancias, cálculo de fitness, test de factibilidad de soluciones y reparación de soluciones.
-6. Resultados: 
+7. Resultados: 
     En esta carpeta se almacena los archivos temporales de resultados que luego son almacenados en la base datos. 
     Además, acá se mostrarán los archivos de análisis realizados a los experimentos ejecutados luego de ejecutar el archivo "analisisSCP.py" o "analisisBEN.py"
-7. Solver:
+8. Solver:
     En esta carpeta se encuentran los solver de cada problema de optimización. Cuando se agrega una metaheurística nueva, en los archivos de esta carpeta se deben incorporar.
-8. util:
+9. util:
     En esta carpeta se encuentran apartados genéricos que son utilizados por diferentes programnas del proyecto.
 
 Para ejecutar los experimentos, primero deben poblar la base de datos. Para esto, deben ejecutar el archivo "poblarDB.py"
