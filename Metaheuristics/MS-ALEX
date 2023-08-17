@@ -1,0 +1,66 @@
+import random
+import math
+import numpy as np
+import getpass
+
+
+def iterarMSA(maxIter, t, dimension, poblacion, bestSolution,solutionsRanking):
+    
+    ro = 0.618 # ro es una constante, paper recomienda usar 0.618
+    B=1.5 # Beta es una constante, paper recomienda usar 1.5. Es parte de la ecuacion de Levy.
+    S=1.0  # S es una constante, paper recomienda usar 1.0. Es parte de la encuacion para determinar alfa.
+    s=0.5 #preguntar si esta bien ese valor. Es parte de la ecuacion de Levy.
+    gamma = math.gamma(B-1) # funcion gama evaluada en Beta - 1. Es parte de la ecuacion de Levy. 
+    a = S*(1) #valor alfa se calcula como Smax. En el paper se sugiere valor 1.0  ¿preguntar porque la ecuacion (3) dice =Smax / t2  esto no puede ser porque en la primera seria division por 0.
+    sin = math.sin(((math.pi*(B-1))/2))
+    L = (((B-1)*gamma*sin)/(math.pi*(s**B))) #Ecuacion de Levy.
+    
+    #print(poblacion) #activar si queremos ver nuestra primera poblacion
+    #print(solutionsRanking) #activar si queremos ver el orden en que se debe ordenar la poblacion segun su ranking de fitness
+    #getpass.getpass("Press Enter to Continue ver datos de arriba ")
+
+    # ///Ordeno poblacion y luego la divido en 2 (NP/2) ///
+
+    solutionsRanking = np.array(solutionsRanking) #1. llevo a array de ranking de fitness
+    mi_poblacion = np.array(poblacion) #2. llevo array poblacion
+    
+    inds = solutionsRanking.argsort() #3. ordeno segun mi ranking fitness
+    mi_poblacion = mi_poblacion[inds] #4. guardo mi poblacion ordenada
+    
+    poblacion_mitad = np.array_split(mi_poblacion,2) #5. guardo en variable poblacion a la mitad
+    poblacion_mitad1 = poblacion_mitad[0]  #6. guardo en variable 1 mitad 1
+    poblacion_mitad2 = poblacion_mitad[1] #7. guardo en variable 2 mitad 2
+    
+    #print("mi poblacion ordenada primera mitad") #activar si quiero ver mi poblacion ordenada a la primera mitad
+    #print(poblacion_mitad1) #activar si quiero ver mi poblacion ordenada a la primera mitad
+    #print("mi poblacion ordenada segunda mitad") #activar si quiero ver mi poblacion ordenada a la segunda mitad
+    #print(poblacion_mitad2)  #activar si quiero ver mi poblacion ordenada a la segunda mitad
+    
+    # // itero por cada individuo de mi primera mitad de poblacion //
+    for i in range(poblacion_mitad1.__len__()):
+        for j in range(dimension):
+            #print("valor actual del individuo: " + str(poblacion_mitad1[i][j]))  #activar si quiero mirar el individuo a procesar
+            
+            poblacion_mitad1[i][j] = (poblacion_mitad1[i][j] + a*L)   #8. genero nuevo individuo para la primera parte de la problacion dividida en funcion de ecuacion de Levy segun paper, seccion 3.1 ecuacion 2. 
+            #print("nuevo valor del individuo: " + str(poblacion_mitad1[i][j])) #activar si quiero mirar el individuo procesado
+            #getpass.getpass("Pausa: Mirar que sucede arriba.") #activar si quiero mirar el individuo procesado
+           
+    for i in range(poblacion_mitad2.__len__()):
+   
+        for j in range(dimension):
+        
+            rand = random.uniform(0.0, 1.0) #9.genero numero aleatorio entre 0 y 1.
+            lamda = random.uniform(0.0, 1.0) #10.genero lamda aleatorio entre 0 y 1 en distribucion uniforme segun paper.
+            
+            if rand > 0.5:
+                poblacion_mitad2[i][j] = lamda*(poblacion_mitad2[i][j] + ro * (bestSolution[j]  - poblacion_mitad2[i][j])) #11. genero nuevo individuo para la segunda parte de la poblacion dividida en funcion de ecuacion de Levy segun paper seccion 3.2 ecuacion (5). 
+                    
+            else:
+                poblacion_mitad2[i][j] = lamda*(poblacion_mitad2[i][j] + (1/ro) * (bestSolution[j]  - poblacion_mitad2[i][j])) #12. genero nuevo individuo para la segunda parte de la poblacion dividida en funcion de ecuacion de Levy segun paper seccion 3.2 ecuacion (6). 
+    #print(poblacion_mitad1) #activar si quiero ver mi poblacion mitad 1 nueva
+    #print(poblacion_mitad2) #activar si quiero ver mi poblacion mitad 2 nueva
+    poblacion = np.concatenate((poblacion_mitad1,poblacion_mitad2)) #13. junto poblacion 1 y 2 en poblacion consolidada.
+    
+    #getpass.getpass("Press Enter to Continue 2")
+    return np.array(poblacion)
+
